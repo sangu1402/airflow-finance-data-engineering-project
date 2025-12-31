@@ -1,94 +1,45 @@
-Yahoo Finance Stock Market Data Pipeline
+Overview
+========
 
-A production-grade ELT data engineering pipeline that extracts stock market data from the Yahoo Finance API, processes it using Apache Spark, stores it in a data warehouse, and visualizes insights through interactive dashboards.
+Welcome to Astronomer! This project was generated after you ran 'astro dev init' using the Astronomer CLI. This readme describes the contents of the project, as well as how to run Apache Airflow on your local machine.
 
-📊 Project Overview
+Project Contents
+================
 
-This project implements an end-to-end automated data pipeline orchestrated using Apache Airflow on Astronomer. It fetches daily stock prices, stores raw data in object storage, transforms it using distributed Spark jobs, loads it into a data warehouse, and enables analytics via business intelligence dashboards.
+Your Astro project contains the following files and folders:
 
-The pipeline is designed to be scalable, observable, and production-ready, following modern data engineering best practices.
+- dags: This folder contains the Python files for your Airflow DAGs. By default, this directory includes one example DAG:
+    - `example_astronauts`: This DAG shows a simple ETL pipeline example that queries the list of astronauts currently in space from the Open Notify API and prints a statement for each astronaut. The DAG uses the TaskFlow API to define tasks in Python, and dynamic task mapping to dynamically print a statement for each astronaut. For more on how this DAG works, see our [Getting started tutorial](https://www.astronomer.io/docs/learn/get-started-with-airflow).
+- Dockerfile: This file contains a versioned Astro Runtime Docker image that provides a differentiated Airflow experience. If you want to execute other commands or overrides at runtime, specify them here.
+- include: This folder contains any additional files that you want to include as part of your project. It is empty by default.
+- packages.txt: Install OS-level packages needed for your project by adding them to this file. It is empty by default.
+- requirements.txt: Install Python packages needed for your project by adding them to this file. It is empty by default.
+- plugins: Add custom or community plugins for your project to this file. It is empty by default.
+- airflow_settings.yaml: Use this local-only file to specify Airflow Connections, Variables, and Pools instead of entering them in the Airflow UI as you develop DAGs in this project.
 
-🚀 Key Features
+Deploy Your Project Locally
+===========================
 
-Automated daily ingestion of stock market data from Yahoo Finance
+Start Airflow on your local machine by running 'astro dev start'.
 
-Object storage using MinIO (S3-compatible)
+This command will spin up five Docker containers on your machine, each for a different Airflow component:
 
-Distributed data transformation using PySpark
+- Postgres: Airflow's Metadata Database
+- Scheduler: The Airflow component responsible for monitoring and triggering tasks
+- DAG Processor: The Airflow component responsible for parsing DAGs
+- API Server: The Airflow component responsible for serving the Airflow UI and API
+- Triggerer: The Airflow component responsible for triggering deferred tasks
 
-Workflow orchestration with Apache Airflow & Astro
+When all five containers are ready the command will open the browser to the Airflow UI at http://localhost:8080/. You should also be able to access your Postgres Database at 'localhost:5432/postgres' with username 'postgres' and password 'postgres'.
 
-Containerized Spark jobs using DockerOperator
+Note: If you already have either of the above ports allocated, you can either [stop your existing Docker containers or change the port](https://www.astronomer.io/docs/astro/cli/troubleshoot-locally#ports-are-not-available-for-my-local-airflow-webserver).
 
-Data warehousing in PostgreSQL
+Deploy Your Project to Astronomer
+=================================
 
-Business intelligence dashboards with Metabase
+If you have an Astronomer account, pushing code to a Deployment on Astronomer is simple. For deploying instructions, refer to Astronomer documentation: https://www.astronomer.io/docs/astro/deploy-code/
 
-🏗️ Architecture
-Yahoo Finance API
-        ↓
-Apache Airflow (Astronomer)
-        ↓
-MinIO (Raw JSON Storage)
-        ↓
-Apache Spark (Dockerized Transformation)
-        ↓
-PostgreSQL Data Warehouse
-        ↓
-Metabase Dashboards
+Contact
+=======
 
-🧰 Tech Stack
-
-Orchestration: Apache Airflow (Astronomer Runtime)
-
-Data Processing: Apache Spark (PySpark)
-
-Storage: MinIO (S3-compatible object storage)
-
-Data Warehouse: PostgreSQL
-
-Visualization: Metabase
-
-Containerization: Docker & Docker Compose
-
-Languages & Libraries: Python, Astro SDK
-
-🔄 Pipeline Workflow
-
-API Availability Sensor – Monitors Yahoo Finance API health
-
-Extract Stock Prices – Fetches historical OHLCV data
-
-Store Raw Data – Saves JSON files in MinIO
-
-Transform Data – Runs Spark jobs in Docker containers
-
-Load to Data Warehouse – Loads CSV data into PostgreSQL
-
-Visualize – Displays insights in Metabase dashboards
-
-📁 Data Storage Structure
-stock-market/
-└── NVDA/
-    ├── prices.json
-    └── formatted_prices/
-        └── *.csv
-
-📈 Use Cases
-
-Track daily and historical stock price trends
-
-Analyze trading volume and price movement
-
-Build BI dashboards for financial insights
-
-Learn production-grade data engineering workflows
-
-🔐 Notes
-
-This setup is intended for local development and learning.
-For production deployments, additional security, scaling, and monitoring configurations are required.
-
-🤝 Acknowledgments
-
-Inspired by the Udemy course by Marc Lamberti and built using modern data engineering tools and best practices.
+The Astronomer CLI is maintained with love by the Astronomer team. To report a bug or suggest a change, reach out to our support.
