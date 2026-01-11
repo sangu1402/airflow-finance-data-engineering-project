@@ -8,6 +8,9 @@ This project implements an end-to-end automated data pipeline orchestrated using
 
 The pipeline is designed to be scalable, observable, and production-ready, following modern data engineering best practices.
 
+<img width="1052" height="308" alt="image" src="https://github.com/user-attachments/assets/89216980-c34b-47fd-95e8-f0814271075e" />
+
+
 🚀 Key Features
 
 Automated daily ingestion of stock market data from Yahoo Finance
