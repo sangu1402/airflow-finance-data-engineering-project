@@ -76,6 +76,8 @@ stock-market/
     ├── prices.json
     └── formatted_prices/
         └── *.csv
+<img width="1330" height="698" alt="image" src="https://github.com/user-attachments/assets/7795db4c-2306-442c-aa49-8940850e9775" />
+
 
 📈 Use Cases
 
